@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contenu %}
+<div class="container">
+<h2>La liste de gestion des projets</h2>
+<form method="POST" class="post-form">
+    {%  csrf_token  %}
+    {{ gestionprojets_form.as_p }}
+    <button type="submit" class="save btn">Enregistrer</button>
+
+</form>
+<table width="95%" border="1" style="border-collapse: collapse">
+   
+    <thead>
+        <tr>
+            <th>Intitule</th> <th>Description</th> <th>Entreprise_Contractante</th> <th>Etat_travaux</th> <th>Date_debut</th> <th>Date_fin</th> <th>Paiement</th> <th>Observation</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%  for gestionprojets in dataGestionProjets  %}
+        <tr>
+            <td>{{ gestionprojets.intitule }}</td>
+            <td>{{ gestionprojets.description }}</td>
+            <td>{{ gestionprojets.entreprise_contractante }}</td>
+            <td>{{ gestionprojets.etat_travaux }}</td>
+            <td>{{ gestionprojets.date_debut }}</td>
+            <td>{{ gestionprojets.date_fin }}</td>
+            <td>{{ gestionprojets.paiement }}</td>
+            <td>{{ gestionprojets.observation }}</td>
+        </tr>
+
+{%  endfor  %}
+
+    </tbody>
+</table>
+</div>
+
+{% endblock %}

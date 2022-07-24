@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block contenu %}
+<div class="container">
+    <h2>La liste d'entreprises</h2>
+    <form method="POST" class ="post-form">
+        {% csrf_token %}
+        {{ listentreprise_form.as_p }}
+        <button type="submit" class="save btn">Enregistrer</button>
+    </form>
+    <table width="95%" border="1" style="border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th>Nom</th> <th>Domaine</th> <th>Type_ent</th> <th>Email</th> <th>Adresse</th> <th>Telephone</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entreprise in dataListEntreprise %}
+            <tr>
+                <td>{{ entreprise.nom }}</td>
+                <td>{{ entreprise.domaine }}</td>
+                <td>{{ entreprise.type_ent }}</td>
+                <td>{{ entreprise.email }}</td>
+                <td>{{ entreprise.adresse }}</td>
+                <td>{{ entreprise.telephone }}</td>
+            </tr>
+    
+    {% endfor %}
+            
+        </tbody>
+    </table>
+    
+
+ {% endblock %}
+
+   </body>
+    </div> 
+</html>

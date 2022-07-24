@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block contenu %}
+<div class="container">
+<h2>La liste d'entreprises contractantes</h2>
+<form method="POST" class="post-form">
+    {%  csrf_token  %}
+    {{ listecontractant_form.as_p }}
+    <button type="submit" class="save btn">Enregistrer</button>
+
+</form>
+<table width="95%" border="1" style="border-collapse: collapse">
+   
+    <thead>
+        <tr>
+            <th>Nom</th> <th>Domaine</th> <th>Gestionnaire</th> <th>Status</th> <th>Genre</th> <th>Adresse</th> <th>Email</th> <th>Date_creation</th> <th>Date_contrat</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%  for listecontractant in dataListeContractant %}
+        <tr>
+            <td>{{ listecontractant.nom}}</td>
+            <td>{{ listecontractant.domaine}}</td>
+            <td>{{ listecontractant.gestionnaire }}</td>
+            <td>{{ listecontractant.status }}</td>
+            <td>{{ listecontractant.genre }}</td>
+            <td>{{ listecontractant.adresse }}</td>
+            <td>{{ listecontractant.email }}</td>
+            <td>{{ listecontractant.date_creation }}</td>
+            <td>{{ listecontractant.date_contrat }}</td>
+        </tr>
+
+{%  endfor  %}
+
+    </tbody>
+
+</table>
+</div>
+{% endblock %}

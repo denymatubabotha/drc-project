@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenu %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+    <h2>Liste de recherche</h2>
+    La demande de l'utilisateur est: {{query}}
+  {% for projet in list_projets %}
+  <li>{{projet.titre}}</li>
+  <p>{{projet.description}}</p>
+  <hr>
+  {% endfor %}
+</div>
+{% endblock  %}

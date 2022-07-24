@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+<style>
+    #bg {
+        background-repeat: no-repeat;
+        background-size: 1800px 900px;
+        background-position: top;
+        background-attachment: fixed;
+    }
+</style>
+
+<title>{% block titre %}Page détaillant les projets{% endblock %}</title>
+
+{% block contenu %}
+
+<!-- MDB icon -->
+<link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<!-- Google Fonts Roboto -->
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/mdb.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' }">
+</head>
+<h2 class="text-center">Details projets</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <image src="{{projet.image_url}}" alt="" style="height:300px;">
+                <h3>{{projet.titre}}</h3>
+                <p>{{projet.description}}</p>
+                <script type="text/javascript" src="{% static 'js/query.min.js' %}"></script>
+                <script type="text/javascript" src="{% static 'js/popper.min.js' %} "></script>
+                <script type="text/javascript" src="{% static 'js/bootstrap.min.js'}"></script>
+                <script type="text/javascript" src="{% static 'js/mdb.min.js'%}"></script>
+            </image>
+        </div>
+    </div>
+</div>
+{% endblock %}
+</body>
+
+</html>

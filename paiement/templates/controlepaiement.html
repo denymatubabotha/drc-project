@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block titre %}Contrôle des paiements {% endblock titre %}
+
+{% block contenu %}
+<meta charset='utf-8'>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+<div class="container">
+<h2>Paiement des prestataires</h2>
+<table class="table">
+    <form method="POST" class="post-form">
+    {%  csrf_token  %}
+    {{ controlepaiement_form.as_p }}
+    <button type="submit" class="save btn">Enregistrer</button>
+</form>
+<table width="95%" border="1" style="border-collapse: collapse">
+    <Caption> disposition de table de base </caption> 
+        <Thead> 
+          <Tr> 
+            <th>Libelle</th> <th>Prestataire</th> <th>Modalites_paiement</th> <th>Montant_percu</th> <th>Caissier</th> <th>Percepteur</th> <th>Adresse</th> <th>Email</th> <th>Observation</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%  for controlepaiement in dataControlePaiement %}
+        <tr>
+            <td>{{ controlepaiement.libelle }}</td>
+            <td>{{ controlepaiement.prestataire }}</td>
+            <td>{{ controlepaiement.modalites_paiement }}</td>
+            <td>{{ controlepaiement.montant_percu}}</td>
+            <td>{{ controlepaiement.caissier }}</td>
+            <td>{{ controlepaiement.percepteur }}</td>
+            <td>{{ controlepaiement.adresse }}</td>
+            <td>{{ controlepaiement.email }}  </td>
+            <td>{{ controlepaiement.observation }}</td>
+        </tr>
+
+        {%  endfor  %}
+
+    </tbody>
+</table>
+</div>
+</body>
+{% endblock %}
